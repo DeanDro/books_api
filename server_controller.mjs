@@ -4,8 +4,11 @@ import * as book from './book_reviews_model.mjs';
 const app = express();
 const PORT = 3000;
 app.use(express.json());
+app.use(express.static('public'));
+app.use(express.urlencoded({extended: true}));
 
-app.get('/', (req, res)=>{
+
+app.get('/', (req, res, next)=>{
     res.status(200).send({
         "book": "Harry Potter",
         "description": "Some test"
@@ -47,6 +50,11 @@ app.post('/reviewbook', (req, res)=>{
         res.status(400).json({Error: 'Request failed'});
     });
 });
+
+app.get('/reviewinput', (req, res)=>{
+    res.render('index');
+});
+
 
 
 app.listen(3000, ()=>console.log("Running at port 3000"));
