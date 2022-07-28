@@ -4,18 +4,15 @@ import * as book from './book_reviews_model.mjs';
 const app = express();
 const PORT = 3000;
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static("public"));
 app.use(express.urlencoded({extended: true}));
 
 
 app.get('/', (req, res, next)=>{
-    res.status(200).send({
-        "book": "Harry Potter",
-        "description": "Some test"
-    });
+    res.render('index');
 }); 
 
-app.get('/review/:title', (req, res)=>{
+app.post('/review/:title', (req, res)=>{
     const bookTitle = req.params.title;
     book.findReviews(bookTitle)
         .then(review=> {
@@ -51,10 +48,4 @@ app.post('/reviewbook', (req, res)=>{
     });
 });
 
-app.get('/reviewinput', (req, res)=>{
-    res.render('index');
-});
-
-
-
-app.listen(3000, ()=>console.log("Running at port 3000"));
+app.listen(PORT, ()=>console.log(`Running at port ${PORT}`));

@@ -1,0 +1,15 @@
+#navbar_page{
+    background-color: black;
+    color: white;
+    height: auto;
+}
+
+#main_content{
+    text-align: center;
+}
+
+#url_example{
+    margin-top: 5%;
+    background-color: lightgray;
+    text-align: left;
+}
