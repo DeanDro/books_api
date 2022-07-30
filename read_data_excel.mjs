@@ -1,18 +1,19 @@
-import readXlsxFile from "read-excel-file";
+import * as fs from 'fs';
 
-//Read data from file
-
-async function getData(){
+function readFileContent(){
     try{
-        return await readXlsxFile("filepath");
-    } catch (error){
+        fs.readFile("C:/Users/Konstantinos/Desktop/CS projects/backend/good_reads_data/books.csv", 'utf8',
+                    (error, data)=>{
+                        if (error){
+                            console.error(error);
+                            return 
+                        }
+                        console.log(data);
+                    })
+    } catch(error){
         console.error(error);
     }
 }
 
-function printData(){
-    getData().then(rows=> console.log(rows))
-            .catch(error=> console.error(error));
-}
+let data = readFileContent();
 
-printData();
