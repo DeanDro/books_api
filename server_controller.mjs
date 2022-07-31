@@ -48,4 +48,29 @@ app.post('/reviewbook', (req, res)=>{
     });
 });
 
+// Store an input to the database
+function storeDataInDatabase(data){
+    book.createReview(
+        data["bookID"], 
+        data["title"],
+        data["authors"],
+        data["average_rating"],
+        data["isbn"],
+        data["isbn13"],
+        data["language_code"],
+        data["num_pages"],
+        data["ratings_count"],
+        data["text_reviews_count"],
+        data["publication_date"],
+        data["publisher"]
+    ).then(review=>{
+        res.status(201).json(review);
+    }).catch(error=> {
+        console.error(error);
+        res.status(400).json({Error: "Request failed"});
+    });
+};
+
 app.listen(PORT, ()=>console.log(`Running at port ${PORT}`));
+
+export { storeDataInDatabase };
