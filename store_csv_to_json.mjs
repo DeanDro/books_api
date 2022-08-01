@@ -51,15 +51,10 @@ function storeData(){
     }
 
     for (let key in content) {
-        storeDataInDatabase(content[key]["bookID"], content[key]["title"],
-        content[key]["authors"], content[key]["average_rating"], content[key]["isbn"],
-        content[key]["isbn13"], content[key]["language_code"], content[key]["num_pages"],
-        content[key]["ratings_count"], content[key]["text_reviews_count"], content[key]["publication_date"],
-        content[key]["publisher"]);
-        //console.log(content[key]["title"]);
+        storeDataInDatabase(content[key]);
     }
-
 
 }
 
 storeData();
+

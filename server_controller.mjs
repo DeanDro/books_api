@@ -12,9 +12,11 @@ app.get('/', (req, res, next)=>{
     res.render('index');
 }); 
 
-app.post('/review/:title', (req, res)=>{
+// Search a book based on the title.
+app.get('/review/:title', (req, res)=>{
     const bookTitle = req.params.title;
-    book.findReviews(bookTitle)
+    let bookFilter = {title: bookTitle};
+    book.findReviews(bookFilter)
         .then(review=> {
             if (review !== null){
                 res.json(review);
@@ -27,6 +29,24 @@ app.post('/review/:title', (req, res)=>{
         });
 });
 
+// Search a book based on the isbn number
+app.get('/isbn/:isbn', (req, res)=>{
+    const isbnNum = req.params.isbn;
+    let filter = {isbn: isbnNum};
+    book.findReviews(filter)
+    .then(review=> {
+        if (review !== null){
+            res.json(review);
+        } else {
+            res.status(404).json({Error: "Book wasn't found"});
+        }
+    })
+    .catch(error=>{
+        res.status(400).json({Error: "Request failled"});
+    });
+});
+
+// Path for creating a new review
 app.post('/reviewbook', (req, res)=>{
     book.createReview(req.body.bookID,
         req.body.title,
@@ -63,12 +83,9 @@ function storeDataInDatabase(data){
         data["text_reviews_count"],
         data["publication_date"],
         data["publisher"]
-    ).then(review=>{
-        res.status(201).json(review);
-    }).catch(error=> {
-        console.error(error);
-        res.status(400).json({Error: "Request failed"});
-    });
+    )
+    .then(res=>console.log(res))
+    .catch(error=>console.error(error));
 };
 
 app.listen(PORT, ()=>console.log(`Running at port ${PORT}`));
