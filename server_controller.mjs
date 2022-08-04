@@ -15,7 +15,7 @@ app.get('/', (req, res, next)=>{
 // Search a book based on the title.
 app.get('/review/:title', (req, res)=>{
     const bookTitle = req.params.title;
-    let bookFilter = {title: bookTitle};
+    let bookFilter = {title: {$regex: bookTitle}};  // We use $regex to return all results that match the query
     book.findReviews(bookFilter)
         .then(review=> {
             if (review !== null){
