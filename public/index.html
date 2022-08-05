@@ -24,7 +24,73 @@
                         </p>
                     </div>
                     <div class="col-md-8" id="doc_description">
-
+                        <p><b>Description</b></p>
+                        <div class="container" id="description_container">
+                            <p>This API returns reviews from over 11,000 books given by Goodreads. The API contains information about:</p>
+                            <ul>
+                                <li><p>bookID: This key contains the id number for that particular book in the database. It is an integer 
+                                    value in a string format and is the first value in the json.</p>
+                                </li>
+                                <li>
+                                    <p>title: This is a string value that contains the title of the book. If an incomplete title is 
+                                        given and more than one books match the value, the API will return all possible values. For 
+                                        example, if the user gives as title "Harry Potter", then the API will return all 7 Harry Potter
+                                        books.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        authors: This is a string value that contains the name of the author or authors that wrote
+                                        that particular book.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        average_rating: This is a float number that comes in a string format and contains the average 
+                                        rating given for that particular book. 
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        isbn: This is an integer value that comes in a string format and contains the isbn number
+                                        for that particular book.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        isbn13: Similarly, this is an integer value that comes in a string format and contains the 
+                                        isbn13 number for that particular book.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        language_code: This is a string value that contains the code of the language the book was 
+                                        written. For example "eng" stand for English. 
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        num_pages: Returns the number of pages in that particular book. The format is a string of an
+                                        integer number. 
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        ratings_count: It returns an integer in a string format with the number of ratings given to that
+                                        book. 
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        text_reviews_count: This integer in the format of a string gives the number of times the 
+                                        book has been reviewed. 
+                                    </p>
+                                </li>
+                                <li>
+                                    
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

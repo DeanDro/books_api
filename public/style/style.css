@@ -13,3 +13,11 @@
     background-color: lightgray;
     text-align: left;
 }
+
+#doc_description{
+    margin-top: 5%;
+}
+
+#description_container{
+    text-align: left;
+}
